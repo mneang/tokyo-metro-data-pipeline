@@ -5,7 +5,7 @@ import os
 
 # === Constants ===
 URL = "https://www.tokyometro.jp/lang_en/corporate/enterprise/transportation/ranking/index.html"
-OUTPUT_FILE = "data/raw/passenger_stats.csv"
+OUTPUT_FILE = "data/processed/passenger_stats.csv"
 
 # === Functions ===
 def fetch_page_content(url):
