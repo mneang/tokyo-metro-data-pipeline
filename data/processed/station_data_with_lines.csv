@@ -1,0 +1,292 @@
+Station_ID,English_Name,Japanese_Name,Line_IDs,Line_Names_En,Line_Names_Jp
+A01,Nishi-magome,西馬込,A,Asakusa Line,浅草線
+A02,Magome,馬込,A,Asakusa Line,浅草線
+A03,Nakanobu,中延,A,Asakusa Line,浅草線
+A04,Togoshi,戸越,A,Asakusa Line,浅草線
+A05,Gotando,五反田,A,Asakusa Line,浅草線
+A06,Takanawadai,高輪台,A,Asakusa Line,浅草線
+A07,Sengakuji,泉岳寺,A,Asakusa Line,浅草線
+A08,Mita,三田,A,Asakusa Line,浅草線
+A09,Daimon,大門,A,Asakusa Line,浅草線
+A10,Shimbashi,新橋,A,Asakusa Line,浅草線
+A11,Higashi-ginza,東銀座,A,Asakusa Line,浅草線
+A12,Takaracho,宝町,A,Asakusa Line,浅草線
+A13,Nihombashi,日本橋,A,Asakusa Line,浅草線
+A14,Ningyocho,人形町,A,Asakusa Line,浅草線
+A15,Higashi-Nihombashi,東日本橋,A,Asakusa Line,浅草線
+A16,Asakusabashi,浅草橋,A,Asakusa Line,浅草線
+A17,Kuramae,蔵前,A,Asakusa Line,浅草線
+A18,Asakusa,浅草,A,Asakusa Line,浅草線
+A19,Honjo-azumabashi,本所吾妻橋,A,Asakusa Line,浅草線
+A20,Oshiage <SKYTREE>,押上,A,Asakusa Line,浅草線
+C01,Yoyogi-uehara,代々木上原,C,Chiyoda Line,千代田線
+C02,Yoyogi-koen,代々木公園,C,Chiyoda Line,千代田線
+C03,Meiji-jingumae <Harajuku>,明治神宮前,C,Chiyoda Line,千代田線
+C04,Omote-sando,表参道,C,Chiyoda Line,千代田線
+C05,Nogizaka,乃木坂,C,Chiyoda Line,千代田線
+C06,Akasaka,赤坂,C,Chiyoda Line,千代田線
+C07,Kokkai-gijidomae,国会議事堂前,C,Chiyoda Line,千代田線
+C08,Kasumigaseki,霞ケ関,C,Chiyoda Line,千代田線
+C09,Hibiya,日比谷,C,Chiyoda Line,千代田線
+C10,Nijubashimae <Marunouchi>,二重橋前,C,Chiyoda Line,千代田線
+C11,Otemachi,大手町,C,Chiyoda Line,千代田線
+C12,Shin-ochanomizu,新御茶ノ水,C,Chiyoda Line,千代田線
+C13,Yushima,湯島,C,Chiyoda Line,千代田線
+C14,Nezu,根津,C,Chiyoda Line,千代田線
+C15,Sendagi,千駄木,C,Chiyoda Line,千代田線
+C16,Nishi-nippori,西日暮里,C,Chiyoda Line,千代田線
+C17,Machiya,町屋,C,Chiyoda Line,千代田線
+C18,Kita-senju,北千住,C,Chiyoda Line,千代田線
+C19,Ayase,綾瀬,C,Chiyoda Line,千代田線
+C20,Kita-ayase,北綾瀬,C,Chiyoda Line,千代田線
+E01,Shinjuku-nishiguchi,新宿西口,E,Toei Ōedo Line,都営地下鉄大江戸線
+E02,Hagashi-shinjuku,東新宿,E,Toei Ōedo Line,都営地下鉄大江戸線
+E03,Wakamatsu-kawada,若松河田,E,Toei Ōedo Line,都営地下鉄大江戸線
+E04,Ushigome-Yanagicho,牛込柳町,E,Toei Ōedo Line,都営地下鉄大江戸線
+E05,Ushigome-kagurazaka,牛込神楽坂,E,Toei Ōedo Line,都営地下鉄大江戸線
+E06,Lidabashi,飯田橋,E,Toei Ōedo Line,都営地下鉄大江戸線
+E07,Kasuga,春日,E,Toei Ōedo Line,都営地下鉄大江戸線
+E08,Hongo-sanchome,本郷三丁目,E,Toei Ōedo Line,都営地下鉄大江戸線
+E09,Ueno-okachimachi,上野御徒町,E,Toei Ōedo Line,都営地下鉄大江戸線
+E10,Shin-okachimachi,新御徒町,E,Toei Ōedo Line,都営地下鉄大江戸線
+E11,Kuramae,蔵前,E,Toei Ōedo Line,都営地下鉄大江戸線
+E12,Ryogoku,両国,E,Toei Ōedo Line,都営地下鉄大江戸線
+E13,Morishita,森下,E,Toei Ōedo Line,都営地下鉄大江戸線
+E14,Kiyosumi,清澄白河,E,Toei Ōedo Line,都営地下鉄大江戸線
+E15,Monzen-nakacho,門前仲町,E,Toei Ōedo Line,都営地下鉄大江戸線
+E16,Tsukishima,月島,E,Toei Ōedo Line,都営地下鉄大江戸線
+E17,Kachidoki,勝どき,E,Toei Ōedo Line,都営地下鉄大江戸線
+E18,Tsukijishijo,築地市場,E,Toei Ōedo Line,都営地下鉄大江戸線
+E19,Shiodome,汐留,E,Toei Ōedo Line,都営地下鉄大江戸線
+E20,Daimon,大門,E,Toei Ōedo Line,都営地下鉄大江戸線
+E21,Akabanebashi,赤羽橋,E,Toei Ōedo Line,都営地下鉄大江戸線
+E22,Azabu-juban,麻布十番,E,Toei Ōedo Line,都営地下鉄大江戸線
+E23,Roppongi,六本木,E,Toei Ōedo Line,都営地下鉄大江戸線
+E24,Aoyama-itchome,青山一丁目,E,Toei Ōedo Line,都営地下鉄大江戸線
+E25,Kokuritsu-kyogijo,国立競技場,E,Toei Ōedo Line,都営地下鉄大江戸線
+E26,Yoyogi,代々木,E,Toei Ōedo Line,都営地下鉄大江戸線
+E27,Shinjuku,新宿,E,Toei Ōedo Line,都営地下鉄大江戸線
+E28,Tochomae,都庁前,E,Toei Ōedo Line,都営地下鉄大江戸線
+E29,Nishi-shinjuku-gochome,西新宿五丁目,E,Toei Ōedo Line,都営地下鉄大江戸線
+E30,Nakano-sakaue,中野坂上,E,Toei Ōedo Line,都営地下鉄大江戸線
+E31,Higashi-nakano,東中野,E,Toei Ōedo Line,都営地下鉄大江戸線
+E32,Nakai,中井,E,Toei Ōedo Line,都営地下鉄大江戸線
+E33,Ochiai-minami-nagasaki,落合南長崎,E,Toei Ōedo Line,都営地下鉄大江戸線
+E34,Shin-egato,新江古田,E,Toei Ōedo Line,都営地下鉄大江戸線
+E35,Netima,練馬,E,Toei Ōedo Line,都営地下鉄大江戸線
+E36,Toshimaen,豊島園,E,Toei Ōedo Line,都営地下鉄大江戸線
+E37,Naerima-kasugacho,練馬春日町,E,Toei Ōedo Line,都営地下鉄大江戸線
+E38,Hikarigaoka,光が丘,E,Toei Ōedo Line,都営地下鉄大江戸線
+F01,Wakoshi,和光市,F,Fukutoshin Line,副都心線
+F02,Chikatetsu-narimasu,地下鉄成増,F,Fukutoshin Line,副都心線
+F03,Chikatetsu-akatsuka,地下鉄赤塚,F,Fukutoshin Line,副都心線
+F04,Heiwadai,平和台,F,Fukutoshin Line,副都心線
+F05,Hikawadai,氷川台,F,Fukutoshin Line,副都心線
+F06,Kotake-mukaihara,小竹向原,F,Fukutoshin Line,副都心線
+F07,Senkawa,千川,F,Fukutoshin Line,副都心線
+F08,Kanamecho,要町,F,Fukutoshin Line,副都心線
+F09,Ikebukuro,池袋,F,Fukutoshin Line,副都心線
+F10,Zoshigaya,雑司が谷,F,Fukutoshin Line,副都心線
+F11,Nishi-waseda,西早稲田,F,Fukutoshin Line,副都心線
+F12,Higashi-shinjuku,東新宿,F,Fukutoshin Line,副都心線
+F13,Shinjuku-sanchome,新宿三丁目,F,Fukutoshin Line,副都心線
+F14,Kita-sando,北参道,F,Fukutoshin Line,副都心線
+F15,Meiji-jingumae <Harajuku>,明治神宮前,F,Fukutoshin Line,副都心線
+F16,Shibuya,渋谷,F,Fukutoshin Line,副都心線
+G01,Shibuya,渋谷,G,Ginza Line,銀座線
+G02,Ometo-sando,表参道,G,Ginza Line,銀座線
+G03,Gaiemmae,外苑前,G,Ginza Line,銀座線
+G04,Aoyama-itchome,青山一丁目,G,Ginza Line,銀座線
+G05,Akasaka-mitsuke,赤坂見附,G,Ginza Line,銀座線
+G06,Tameiki-sanno,溜池山王,G,Ginza Line,銀座線
+G07,Toranomon Hills,虎ノ門,G,Ginza Line,銀座線
+G08,Shimbashi,新橋,G,Ginza Line,銀座線
+G09,Ginza,銀座,G,Ginza Line,銀座線
+G10,Kyobashi,京橋,G,Ginza Line,銀座線
+G11,Nihombashi,日本橋,G,Ginza Line,銀座線
+G12,Mitsukoshimae,三越前,G,Ginza Line,銀座線
+G13,Kanda,神田,G,Ginza Line,銀座線
+G14,Suehirocho,末広町,G,Ginza Line,銀座線
+G15,Ueno-hirokoji,上野広小路,G,Ginza Line,銀座線
+G16,Ueno,上野,G,Ginza Line,銀座線
+G17,Inaricho,稲荷町,G,Ginza Line,銀座線
+G18,Tawaramachi,田原町,G,Ginza Line,銀座線
+G19,Asakusa,浅草,G,Ginza Line,銀座線
+H01,Naka-meguro,中目黒,H,Hibiya Line,日比谷線
+H02,Ebisu,恵比寿,H,Hibiya Line,日比谷線
+H03,Hiro-o,広尾,H,Hibiya Line,日比谷線
+H04,Roppongi,六本木,H,Hibiya Line,日比谷線
+H05,Kamiyacho,神谷町,H,Hibiya Line,日比谷線
+H06,Toranomon-hills,虎ノ門ヒルズ,H,Hibiya Line,日比谷線
+H07,Kasumigaseki,霞ケ関,H,Hibiya Line,日比谷線
+H08,Hibiya,日比谷,H,Hibiya Line,日比谷線
+H09,Ginza,銀座,H,Hibiya Line,日比谷線
+H10,Higashi-ginza,東銀座,H,Hibiya Line,日比谷線
+H11,Tsukiji,築地,H,Hibiya Line,日比谷線
+H12,Hatchobori,八丁堀,H,Hibiya Line,日比谷線
+H13,Kayabacho,茅場町,H,Hibiya Line,日比谷線
+H14,Ningyocho,人形町,H,Hibiya Line,日比谷線
+H15,Kodemmacho,小伝馬町,H,Hibiya Line,日比谷線
+H16,Akihabara,秋葉原,H,Hibiya Line,日比谷線
+H17,Naka-okachimachi,仲御徒町,H,Hibiya Line,日比谷線
+H18,Ueno,上野,H,Hibiya Line,日比谷線
+H19,Iriya,入谷,H,Hibiya Line,日比谷線
+H20,Minowa,三ノ輪,H,Hibiya Line,日比谷線
+H21,Minami-senju,南千住,H,Hibiya Line,日比谷線
+H22,Kita-senju,北千住,H,Hibiya Line,日比谷線
+I01,Meguro,目黒,I,Mita Line,三田線
+I02,Shirokanedai,白金台,I,Mita Line,三田線
+I03,Shirokane-takanawa,白金高輪,I,Mita Line,三田線
+I04,Mita,三田,I,Mita Line,三田線
+I05,Shibakoen,芝公園,I,Mita Line,三田線
+I06,Onairimon,御成門,I,Mita Line,三田線
+I07,Uchisaiwaicho,内幸町,I,Mita Line,三田線
+I08,Hibiya,日比谷,I,Mita Line,三田線
+I09,Otemachi,大手町,I,Mita Line,三田線
+I10,Jimbocho,神保町,I,Mita Line,三田線
+I11,Suidobashi,水道橋,I,Mita Line,三田線
+I12,Kasuga,春日,I,Mita Line,三田線
+I13,Hakusan,白山,I,Mita Line,三田線
+I14,Sengoku,千石,I,Mita Line,三田線
+I15,Sugamo,巣鴨,I,Mita Line,三田線
+I16,Nishi-sugamo,西巣鴨,I,Mita Line,三田線
+I17,Shin-itabashi,新板橋,I,Mita Line,三田線
+I18,Itabashi-kuyakushomae,板橋区役所前,I,Mita Line,三田線
+I19,Itabashihoncho,板橋本町,I,Mita Line,三田線
+I20,Motohasunuma,本蓮沼,I,Mita Line,三田線
+I21,Shinmura-sakaue,志村坂上,I,Mita Line,三田線
+I22,Shgimura-sanchome,志村三丁目,I,Mita Line,三田線
+I23,Hasuna,蓮根,I,Mita Line,三田線
+I24,Nishidai,西台,I,Mita Line,三田線
+I25,Takashimadaira,高島平,I,Mita Line,三田線
+I26,Shin-takashimadaira,新高島平,I,Mita Line,三田線
+I27,Nishi-takashimadaira,西高島平,I,Mita Line,三田線
+M01,Ogikubo,荻窪,M,Marunouchi Line,丸ノ内線
+M02,Minami-asagaya,南阿佐ケ谷,M,Marunouchi Line,丸ノ内線
+M03,Sin-koenji,新高円寺,M,Marunouchi Line,丸ノ内線
+M04,Higashi-koenji,東高円寺,M,Marunouchi Line,丸ノ内線
+M05,Shin-nakano,新中野,M,Marunouchi Line,丸ノ内線
+M06,Nakano-sakaue,中野坂上,M,Marunouchi Line,丸ノ内線
+M07,Nishi-shinjuku,西新宿,M,Marunouchi Line,丸ノ内線
+M08,Shinjuku-nishiguchi,新宿,M,Marunouchi Line,丸ノ内線
+M09,Shinjuku-sanchome,新宿三丁目,M,Marunouchi Line,丸ノ内線
+M10,Shinjuku-gyoemmae,新宿御苑前,M,Marunouchi Line,丸ノ内線
+M11,Yotsuya-sanchome,四谷三丁目,M,Marunouchi Line,丸ノ内線
+M12,Yotasuya,四ツ谷,M,Marunouchi Line,丸ノ内線
+M13,Akasaka-mutsuke,赤坂見附,M,Marunouchi Line,丸ノ内線
+M14,Kokki-gijidomae,国会議事堂前,M,Marunouchi Line,丸ノ内線
+M15,Kasumigaseki,霞ケ関,M,Marunouchi Line,丸ノ内線
+M16,Ginza,銀座,M,Marunouchi Line,丸ノ内線
+M17,Tokyo,東京,M,Marunouchi Line,丸ノ内線
+M18,Otemachi,大手町,M,Marunouchi Line,丸ノ内線
+M19,Awajicho,淡路町,M,Marunouchi Line,丸ノ内線
+M20,Ochanomizu,御茶ノ水,M,Marunouchi Line,丸ノ内線
+M21,Hongo-sanchome,本郷三丁目,M,Marunouchi Line,丸ノ内線
+M22,Korakuen,後楽園,M,Marunouchi Line,丸ノ内線
+M23,Myogadani,茗荷谷,M,Marunouchi Line,丸ノ内線
+M24,Shin-otsuka,新大塚,M,Marunouchi Line,丸ノ内線
+M25,Ikebukuro,池袋,M,Marunouchi Line,丸ノ内線
+Mb03,Nonancho,方南町,"M, Mb","Marunouchi Line, Marunouchi Line Branch Line","丸ノ内線, 丸ノ内線分岐線"
+Mb04,Nakano-fujimicho,中野富士見町,"M, Mb","Marunouchi Line, Marunouchi Line Branch Line","丸ノ内線, 丸ノ内線分岐線"
+Mb05,Nakano-shimbashi,中野新橋,"M, Mb","Marunouchi Line, Marunouchi Line Branch Line","丸ノ内線, 丸ノ内線分岐線"
+N01,Meguro,目黒,N,Namboku Line,南北線
+N02,Shirokanedai,白金台,N,Namboku Line,南北線
+N03,Shirokane-takanawa,白金高輪,N,Namboku Line,南北線
+N04,Azabu-juban,麻布十番,N,Namboku Line,南北線
+N05,Roppongi-itchome,六本木一丁目,N,Namboku Line,南北線
+N06,Tameike-sanno,溜池山王,N,Namboku Line,南北線
+N07,Nagatacho,永田町,N,Namboku Line,南北線
+N08,Yotsuya,四ツ谷,N,Namboku Line,南北線
+N09,Ichigaya,市ケ谷,N,Namboku Line,南北線
+N10,Iidabashi,飯田橋,N,Namboku Line,南北線
+N11,Korakuen,後楽園,N,Namboku Line,南北線
+N12,Todaimae,東大前,N,Namboku Line,南北線
+N13,Hon-komagome,本駒込,N,Namboku Line,南北線
+N14,Komagome,駒込,N,Namboku Line,南北線
+N15,Nishigahara,西ケ原,N,Namboku Line,南北線
+N16,Oji,王子,N,Namboku Line,南北線
+N17,Oji-kamiya,王子神谷,N,Namboku Line,南北線
+N18,Shimo,志茂,N,Namboku Line,南北線
+N19,Akabane-iwabuchi,赤羽岩淵,N,Namboku Line,南北線
+S01,Shinjuku,新宿,S,Shinjuku Line,新宿線
+S02,Shinjuku-sanchome,新宿三丁目,S,Shinjuku Line,新宿線
+S03,Akebonobashi,曙橋,S,Shinjuku Line,新宿線
+S04,Ichigaya,市ケ谷,S,Shinjuku Line,新宿線
+S05,Kudanshita,九段下,S,Shinjuku Line,新宿線
+S06,Jimbocho,神保町,S,Shinjuku Line,新宿線
+S07,Ogawamachi,小川町,S,Shinjuku Line,新宿線
+S08,Iwamotocho,岩本町,S,Shinjuku Line,新宿線
+S09,Bakuro yokoyama,馬喰横山,S,Shinjuku Line,新宿線
+S10,Hamacho,浜町,S,Shinjuku Line,新宿線
+S11,Morishita,森下,S,Shinjuku Line,新宿線
+S12,Kikukawa,菊川,S,Shinjuku Line,新宿線
+S13,Sumiyoshi,住吉,S,Shinjuku Line,新宿線
+S14,Nishi-ojima,西大島,S,Shinjuku Line,新宿線
+S15,Ojima,大島,S,Shinjuku Line,新宿線
+S16,Higashi-ojima,東大島,S,Shinjuku Line,新宿線
+S17,Funabori,船堀,S,Shinjuku Line,新宿線
+S18,Ichinoe,一之江,S,Shinjuku Line,新宿線
+S19,Mizue,瑞江,S,Shinjuku Line,新宿線
+S20,Shinozaki,篠崎,S,Shinjuku Line,新宿線
+S21,Motoyawata,本八幡,S,Shinjuku Line,新宿線
+T01,Nakano,中野,T,Tōzai Line,東西線
+T02,Ochiai,落合,T,Tōzai Line,東西線
+T03,Takadanobaba,高田馬場,T,Tōzai Line,東西線
+T04,Waseda,早稲田,T,Tōzai Line,東西線
+T05,Kagurazaka,神楽坂,T,Tōzai Line,東西線
+T06,Iidabashi,飯田橋,T,Tōzai Line,東西線
+T07,Kudanshita,九段下,T,Tōzai Line,東西線
+T08,Takebashi,竹橋,T,Tōzai Line,東西線
+T09,Otemachi,大手町,T,Tōzai Line,東西線
+T10,Nihombashi,日本橋,T,Tōzai Line,東西線
+T11,Kayabacho,茅場町,T,Tōzai Line,東西線
+T12,Monzen-nakacho,門前仲町,T,Tōzai Line,東西線
+T13,Kiba,木場,T,Tōzai Line,東西線
+T14,Toyocho,東陽町,T,Tōzai Line,東西線
+T15,Minami-sunamachi,南砂町,T,Tōzai Line,東西線
+T16,Nishi-kasai,西葛西,T,Tōzai Line,東西線
+T17,Kasai,葛西,T,Tōzai Line,東西線
+T18,Urayasu,浦安,T,Tōzai Line,東西線
+T19,Minami-gyotoku,南行徳,T,Tōzai Line,東西線
+T20,Gyotoku,行徳,T,Tōzai Line,東西線
+T21,Myoden,妙典,T,Tōzai Line,東西線
+T22,Baraki-nakayama,原木中山,T,Tōzai Line,東西線
+T23,Nishi-funabashi,西船橋,T,Tōzai Line,東西線
+Y01,Wakoshi,和光市,Y,Yūrakuchō Line,有楽町線
+Y02,Chikatetsu-narimasu,地下鉄成増,Y,Yūrakuchō Line,有楽町線
+Y03,Chikatetsu-akatsuka,地下鉄赤塚,Y,Yūrakuchō Line,有楽町線
+Y04,Heiwadai,平和台,Y,Yūrakuchō Line,有楽町線
+Y05,Hikawadai,氷川台,Y,Yūrakuchō Line,有楽町線
+Y06,Kotake-mukaihara,小竹向原,Y,Yūrakuchō Line,有楽町線
+Y07,Senkawa,千川,Y,Yūrakuchō Line,有楽町線
+Y08,Kanamecho,要町,Y,Yūrakuchō Line,有楽町線
+Y09,Ikebukuro,池袋,Y,Yūrakuchō Line,有楽町線
+Y10,Higashi-ikebukuro,東池袋,Y,Yūrakuchō Line,有楽町線
+Y11,Gokokuji,護国寺,Y,Yūrakuchō Line,有楽町線
+Y12,Edogawabashi,江戸川橋,Y,Yūrakuchō Line,有楽町線
+Y13,Iidabashi,飯田橋,Y,Yūrakuchō Line,有楽町線
+Y14,Ichigaya,市ケ谷,Y,Yūrakuchō Line,有楽町線
+Y15,Kojimachi,麹町,Y,Yūrakuchō Line,有楽町線
+Y16,Nagatacho,永田町,Y,Yūrakuchō Line,有楽町線
+Y17,Sakuradamon,桜田門,Y,Yūrakuchō Line,有楽町線
+Y18,Yurakucho,有楽町,Y,Yūrakuchō Line,有楽町線
+Y19,Ginza-itchome,銀座一丁目,Y,Yūrakuchō Line,有楽町線
+Y20,Shintomicho,新富町,Y,Yūrakuchō Line,有楽町線
+Y21,Tsukishima,月島,Y,Yūrakuchō Line,有楽町線
+Y22,Toyosu,豊洲,Y,Yūrakuchō Line,有楽町線
+Y23,Tatsumi,辰巳,Y,Yūrakuchō Line,有楽町線
+Y24,Shin-kiba,新木場,Y,Yūrakuchō Line,有楽町線
+Z01,Shibuya,渋谷,Z,Hanzōmon Line,半蔵門線
+Z02,Omote-sando,表参道,Z,Hanzōmon Line,半蔵門線
+Z03,Aoyama-itchome,青山一丁目,Z,Hanzōmon Line,半蔵門線
+Z04,Nagatacho,永田町,Z,Hanzōmon Line,半蔵門線
+Z05,Hanzomon,半蔵門,Z,Hanzōmon Line,半蔵門線
+Z06,Kudanshita,九段下,Z,Hanzōmon Line,半蔵門線
+Z07,Jimbocho,神保町,Z,Hanzōmon Line,半蔵門線
+Z08,Otemachi,大手町,Z,Hanzōmon Line,半蔵門線
+Z09,Mitsukoshimae,三越前,Z,Hanzōmon Line,半蔵門線
+Z10,Suitengumae,水天宮前,Z,Hanzōmon Line,半蔵門線
+Z11,Kiyosumi-shirakawa,清澄白河,Z,Hanzōmon Line,半蔵門線
+Z12,Sumiyoshi,住吉,Z,Hanzōmon Line,半蔵門線
+Z13,Kinshicho,錦糸町,Z,Hanzōmon Line,半蔵門線
+Z14,Oshiage <SKYTREE>,押上,Z,Hanzōmon Line,半蔵門線
