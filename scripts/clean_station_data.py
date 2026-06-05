@@ -1,97 +1,136 @@
 import os
-import python -m pip install -r requirements.txt as pd
+import pandas as pd
 
 # Paths for input and output files (入力ファイルと出力ファイルのパス)
-INPUT_STATIONS_PATH = "./data/cleaned/stations_cleaned.csv"
-OUTPUT_LINES_PATH = "./data/cleaned/lines_cleaned.csv"
+INPUT_STATION_PATH = "./data/processed/station_data_with_lines.csv"
+OUTPUT_STATION_PATH = "./data/cleaned/stations_cleaned.csv"
 
 
-def create_lines_table(stations_data):
+def normalize_station_lines(row):
     """
-    Create a normalized Lines table from cleaned station data.
-    (クリーン済み駅データから正規化された路線テーブルを作成します)
+    Normalize line fields for each station row.
+    (各駅行の路線フィールドを正規化します)
 
-    The cleaned station data should already have one Line_ID per station row.
-    (クリーン済み駅データでは、各駅行に1つのLine_IDがある前提です)
+    Important:
+    - Station_ID should remain unique.
+    - Marunouchi Branch stations such as Mb03, Mb04, and Mb05 should map to Mb only.
+    - This prevents duplicate Station_ID values in SQLite.
+
+    重要:
+    - Station_IDは一意に保ちます。
+    - Mb03、Mb04、Mb05などの丸ノ内線分岐線の駅はMbのみに紐づけます。
+    - これによりSQLiteでStation_IDの重複を防ぎます。
     """
-    required_columns = ["Line_IDs", "Line_Names_En", "Line_Names_Jp"]
+    station_id = str(row["Station_ID"]).strip()
 
-    # Validate required columns before transformation.
-    # 変換前に必要な列を検証します。
-    missing_columns = [col for col in required_columns if col not in stations_data.columns]
+    # Marunouchi Branch stations should belong to Mb only.
+    # 丸ノ内線分岐線の駅はMbのみに所属させます。
+    if station_id.startswith("Mb"):
+        row["Line_IDs"] = "Mb"
+        row["Line_Names_En"] = "Marunouchi Line Branch Line"
+        row["Line_Names_Jp"] = "丸ノ内線分岐線"
+
+    return row
+
+
+def clean_station_data(station_data):
+    """
+    Clean station data for relational database loading.
+    (リレーショナルデータベースに読み込むために駅データをクリーニングします)
+    """
+    # Standardize possible column-name variants.
+    # 可能性のある列名の揺れを標準化します。
+    station_data = station_data.rename(
+        columns={
+            "Line_ID": "Line_IDs",
+            "Line_Name_En": "Line_Names_En",
+            "Line_Name_Jp": "Line_Names_Jp",
+        }
+    )
+
+    required_columns = [
+        "Station_ID",
+        "English_Name",
+        "Japanese_Name",
+        "Line_IDs",
+        "Line_Names_En",
+        "Line_Names_Jp",
+    ]
+
+    # Validate required columns before cleaning.
+    # クリーニング前に必要な列を検証します。
+    missing_columns = [col for col in required_columns if col not in station_data.columns]
     if missing_columns:
         raise ValueError(
-            f"Missing required columns in station data: {missing_columns} "
-            f"(駅データに必要な列が不足しています: {missing_columns})"
+            f"Missing required columns: {missing_columns} "
+            f"(必要な列が不足しています: {missing_columns})"
         )
 
-    # Extract line metadata and rename fields for the Lines table.
-    # 路線メタデータを抽出し、Linesテーブル用に列名を変更します。
-    lines_data = (
-        stations_data[required_columns]
-        .drop_duplicates()
-        .rename(
-            columns={
-                "Line_IDs": "Line_ID",
-                "Line_Names_En": "Line_Name_En",
-                "Line_Names_Jp": "Line_Name_Jp",
-            }
+    # Keep only the columns needed for the relational model.
+    # リレーショナルモデルに必要な列のみを保持します。
+    cleaned_data = station_data[required_columns].copy()
+
+    # Strip whitespace from text fields.
+    # テキスト項目の前後の空白を削除します。
+    for col in required_columns:
+        cleaned_data[col] = cleaned_data[col].astype(str).str.strip()
+
+    # Normalize Marunouchi Branch stations.
+    # 丸ノ内線分岐線の駅を正規化します。
+    cleaned_data = cleaned_data.apply(normalize_station_lines, axis=1)
+
+    # Remove exact duplicate rows.
+    # 完全に重複した行を削除します。
+    cleaned_data = cleaned_data.drop_duplicates()
+
+    # Enforce one row per Station_ID for SQLite primary key integrity.
+    # SQLiteの主キー整合性のため、Station_IDごとに1行にします。
+    duplicate_station_ids = cleaned_data[
+        cleaned_data["Station_ID"].duplicated(keep=False)
+    ].sort_values("Station_ID")
+
+    if not duplicate_station_ids.empty:
+        print("Duplicate Station_ID values found. (重複するStation_IDが見つかりました。)")
+        print(
+            duplicate_station_ids[
+                ["Station_ID", "English_Name", "Line_IDs", "Line_Names_En"]
+            ]
         )
-    )
-
-    # Strip whitespace for reliable SQL joins.
-    # SQL結合を安定させるため、前後の空白を削除します。
-    for col in ["Line_ID", "Line_Name_En", "Line_Name_Jp"]:
-        lines_data[col] = lines_data[col].astype(str).str.strip()
-
-    # Enforce one row per Line_ID.
-    # Line_IDごとに1行であることを保証します。
-    duplicate_line_ids = lines_data[
-        lines_data["Line_ID"].duplicated(keep=False)
-    ].sort_values("Line_ID")
-
-    if not duplicate_line_ids.empty:
-        print("Duplicate Line_ID values found. (重複するLine_IDが見つかりました。)")
-        print(duplicate_line_ids)
         raise ValueError(
-            "Line_ID must be unique before SQLite loading. "
-            "(SQLiteに読み込む前にLine_IDは一意である必要があります。)"
+            "Station_ID must be unique before SQLite loading. "
+            "(SQLiteに読み込む前にStation_IDは一意である必要があります。)"
         )
 
-    # Sort for readable output.
-    # 読みやすい出力のために並び替えます。
-    lines_data = lines_data.sort_values("Line_ID").reset_index(drop=True)
-
-    return lines_data
+    return cleaned_data
 
 
-def save_lines_table(lines_data):
+def save_cleaned_data(cleaned_data):
     """
-    Save the Lines table to CSV.
-    (路線テーブルをCSVに保存します)
+    Save cleaned station data to CSV.
+    (クリーン済み駅データをCSVに保存します)
     """
-    os.makedirs(os.path.dirname(OUTPUT_LINES_PATH), exist_ok=True)
-    lines_data.to_csv(OUTPUT_LINES_PATH, index=False, encoding="utf-8")
+    os.makedirs(os.path.dirname(OUTPUT_STATION_PATH), exist_ok=True)
+    cleaned_data.to_csv(OUTPUT_STATION_PATH, index=False, encoding="utf-8")
 
     print(
-        f"Lines data cleaned and saved to {OUTPUT_LINES_PATH}. "
-        f"(路線データをクリーニングし、{OUTPUT_LINES_PATH} に保存しました。)"
+        f"Station data cleaned and saved to {OUTPUT_STATION_PATH}. "
+        f"(駅データをクリーニングし、{OUTPUT_STATION_PATH} に保存しました。)"
     )
-    print(f"Rows saved: {len(lines_data)} (保存行数: {len(lines_data)})")
+    print(f"Rows saved: {len(cleaned_data)} (保存行数: {len(cleaned_data)})")
 
 
 def main():
     """
-    Run line data creation.
-    (路線データ作成を実行します)
+    Run station data cleaning.
+    (駅データのクリーニングを実行します)
     """
-    print("Starting line data creation. (路線データ作成を開始します。)")
+    print("Starting station data cleaning. (駅データのクリーニングを開始します。)")
 
-    stations_data = pd.read_csv(INPUT_STATIONS_PATH)
-    lines_data = create_lines_table(stations_data)
-    save_lines_table(lines_data)
+    station_data = pd.read_csv(INPUT_STATION_PATH)
+    cleaned_data = clean_station_data(station_data)
+    save_cleaned_data(cleaned_data)
 
-    print("Line data creation completed. (路線データ作成が完了しました。)")
+    print("Station data cleaning completed. (駅データのクリーニングが完了しました。)")
 
 
 if __name__ == "__main__":
