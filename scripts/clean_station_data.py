@@ -1,42 +1,98 @@
-import pandas as pd
 import os
+import python -m pip install -r requirements.txt as pd
 
-def clean_station_data(input_path, output_path):
-    # Load the raw data
-    print("Loading raw station data... (生データをロード中...)")
-    stations = pd.read_csv(input_path)
-    
-    # Initialize a list to store cleaned rows
-    cleaned_rows = []
-    
-    # Process each row
-    for _, row in stations.iterrows():
-        line_ids = row['Line_IDs'].split(', ')
-        line_names_en = row['Line_Names_En'].split(', ')
-        line_names_jp = row['Line_Names_Jp'].split(', ')
-        
-        # Check for multiple Line_IDs (e.g., 'M, Mb')
-        for line_id, line_name_en, line_name_jp in zip(line_ids, line_names_en, line_names_jp):
-            # Create a new row for each line
-            new_row = row.copy()
-            new_row['Line_IDs'] = line_id.strip()
-            new_row['Line_Names_En'] = line_name_en.strip()
-            new_row['Line_Names_Jp'] = line_name_jp.strip()
-            cleaned_rows.append(new_row)
-    
-    # Create a cleaned DataFrame
-    cleaned_data = pd.DataFrame(cleaned_rows)
-    
-    # Save the cleaned data
-    print("Saving cleaned station data... (クリーンデータを保存中...)")
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    cleaned_data.to_csv(output_path, index=False)
-    print("Station data cleaning completed. (駅データのクリーニングが完了しました。)")
+# Paths for input and output files (入力ファイルと出力ファイルのパス)
+INPUT_STATIONS_PATH = "./data/cleaned/stations_cleaned.csv"
+OUTPUT_LINES_PATH = "./data/cleaned/lines_cleaned.csv"
+
+
+def create_lines_table(stations_data):
+    """
+    Create a normalized Lines table from cleaned station data.
+    (クリーン済み駅データから正規化された路線テーブルを作成します)
+
+    The cleaned station data should already have one Line_ID per station row.
+    (クリーン済み駅データでは、各駅行に1つのLine_IDがある前提です)
+    """
+    required_columns = ["Line_IDs", "Line_Names_En", "Line_Names_Jp"]
+
+    # Validate required columns before transformation.
+    # 変換前に必要な列を検証します。
+    missing_columns = [col for col in required_columns if col not in stations_data.columns]
+    if missing_columns:
+        raise ValueError(
+            f"Missing required columns in station data: {missing_columns} "
+            f"(駅データに必要な列が不足しています: {missing_columns})"
+        )
+
+    # Extract line metadata and rename fields for the Lines table.
+    # 路線メタデータを抽出し、Linesテーブル用に列名を変更します。
+    lines_data = (
+        stations_data[required_columns]
+        .drop_duplicates()
+        .rename(
+            columns={
+                "Line_IDs": "Line_ID",
+                "Line_Names_En": "Line_Name_En",
+                "Line_Names_Jp": "Line_Name_Jp",
+            }
+        )
+    )
+
+    # Strip whitespace for reliable SQL joins.
+    # SQL結合を安定させるため、前後の空白を削除します。
+    for col in ["Line_ID", "Line_Name_En", "Line_Name_Jp"]:
+        lines_data[col] = lines_data[col].astype(str).str.strip()
+
+    # Enforce one row per Line_ID.
+    # Line_IDごとに1行であることを保証します。
+    duplicate_line_ids = lines_data[
+        lines_data["Line_ID"].duplicated(keep=False)
+    ].sort_values("Line_ID")
+
+    if not duplicate_line_ids.empty:
+        print("Duplicate Line_ID values found. (重複するLine_IDが見つかりました。)")
+        print(duplicate_line_ids)
+        raise ValueError(
+            "Line_ID must be unique before SQLite loading. "
+            "(SQLiteに読み込む前にLine_IDは一意である必要があります。)"
+        )
+
+    # Sort for readable output.
+    # 読みやすい出力のために並び替えます。
+    lines_data = lines_data.sort_values("Line_ID").reset_index(drop=True)
+
+    return lines_data
+
+
+def save_lines_table(lines_data):
+    """
+    Save the Lines table to CSV.
+    (路線テーブルをCSVに保存します)
+    """
+    os.makedirs(os.path.dirname(OUTPUT_LINES_PATH), exist_ok=True)
+    lines_data.to_csv(OUTPUT_LINES_PATH, index=False, encoding="utf-8")
+
+    print(
+        f"Lines data cleaned and saved to {OUTPUT_LINES_PATH}. "
+        f"(路線データをクリーニングし、{OUTPUT_LINES_PATH} に保存しました。)"
+    )
+    print(f"Rows saved: {len(lines_data)} (保存行数: {len(lines_data)})")
+
 
 def main():
-    input_path = './data/processed/station_data_with_lines.csv'
-    output_path = './data/cleaned/stations_cleaned.csv'
-    clean_station_data(input_path, output_path)
+    """
+    Run line data creation.
+    (路線データ作成を実行します)
+    """
+    print("Starting line data creation. (路線データ作成を開始します。)")
+
+    stations_data = pd.read_csv(INPUT_STATIONS_PATH)
+    lines_data = create_lines_table(stations_data)
+    save_lines_table(lines_data)
+
+    print("Line data creation completed. (路線データ作成が完了しました。)")
+
 
 if __name__ == "__main__":
     main()

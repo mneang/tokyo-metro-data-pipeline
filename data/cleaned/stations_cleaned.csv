@@ -186,11 +186,8 @@ M22,Korakuen,後楽園,M,Marunouchi Line,丸ノ内線
 M23,Myogadani,茗荷谷,M,Marunouchi Line,丸ノ内線
 M24,Shin-otsuka,新大塚,M,Marunouchi Line,丸ノ内線
 M25,Ikebukuro,池袋,M,Marunouchi Line,丸ノ内線
-Mb03,Nonancho,方南町,M,Marunouchi Line,丸ノ内線
 Mb03,Nonancho,方南町,Mb,Marunouchi Line Branch Line,丸ノ内線分岐線
-Mb04,Nakano-fujimicho,中野富士見町,M,Marunouchi Line,丸ノ内線
 Mb04,Nakano-fujimicho,中野富士見町,Mb,Marunouchi Line Branch Line,丸ノ内線分岐線
-Mb05,Nakano-shimbashi,中野新橋,M,Marunouchi Line,丸ノ内線
 Mb05,Nakano-shimbashi,中野新橋,Mb,Marunouchi Line Branch Line,丸ノ内線分岐線
 N01,Meguro,目黒,N,Namboku Line,南北線
 N02,Shirokanedai,白金台,N,Namboku Line,南北線
