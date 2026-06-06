@@ -126,7 +126,24 @@ def main():
     """
     print("Starting station data cleaning. (駅データのクリーニングを開始します。)")
 
+    # Validate input file exists
+    # (入力ファイルの存在を確認)
+    from pathlib import Path
+    input_path = Path(INPUT_STATION_PATH)
+    if not input_path.exists():
+        raise FileNotFoundError(
+            f"Input file not found: {INPUT_STATION_PATH} (入力ファイルが見つかりません: {INPUT_STATION_PATH})"
+        )
+
     station_data = pd.read_csv(INPUT_STATION_PATH)
+
+    # Validate input data is not empty
+    # (入力データが空でないことを確認)
+    if station_data.empty:
+        raise ValueError(
+            f"Input file is empty: {INPUT_STATION_PATH} (入力ファイルが空です: {INPUT_STATION_PATH})"
+        )
+
     cleaned_data = clean_station_data(station_data)
     save_cleaned_data(cleaned_data)
 

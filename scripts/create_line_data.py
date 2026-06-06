@@ -87,7 +87,24 @@ def main():
     """
     print("Starting line data creation. (路線データ作成を開始します。)")
 
+    # Validate input file exists
+    # (入力ファイルの存在を確認)
+    from pathlib import Path
+    input_path = Path(INPUT_STATIONS_PATH)
+    if not input_path.exists():
+        raise FileNotFoundError(
+            f"Input file not found: {INPUT_STATIONS_PATH} (入力ファイルが見つかりません: {INPUT_STATIONS_PATH})"
+        )
+
     stations_data = pd.read_csv(INPUT_STATIONS_PATH)
+
+    # Validate input data is not empty
+    # (入力データが空でないことを確認)
+    if stations_data.empty:
+        raise ValueError(
+            f"Input file is empty: {INPUT_STATIONS_PATH} (入力ファイルが空です: {INPUT_STATIONS_PATH})"
+        )
+
     lines_data = create_lines_table(stations_data)
     save_lines_table(lines_data)
 
