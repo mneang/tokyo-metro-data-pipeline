@@ -1,175 +1,145 @@
-# Tokyo Metro Data Pipeline
-## 東京メトロ データパイプライン
+# 東京メトロ 需要・収益分析 / Tokyo Metro Demand & Revenue Analytics
 
-**Completed for the GitHub Finish-Up-A-Thon challenge** | [View Dashboard](assets/dashboard/)
+A compact, bilingual data analytics project that turns Tokyo Metro public datasets into a cleaned data pipeline, validated SQLite database, SQL analysis layer, and Tableau dashboard.
 
-Analyze Tokyo Metro passenger and revenue patterns to answer critical business questions: Which lines are most profitable? Where should operational resources be prioritized? How does revenue evolve across fiscal years?
+東京メトロの公開データをもとに、乗客需要・主要駅・収益推移を分析する日英バイリンガル分析プロジェクトです。
 
-This project demonstrates a **complete data pipeline**: from raw data extraction through ETL, relational database design, exploratory analysis, and business intelligence visualization—ready for stakeholder decision-making.
-
-東京メトロの乗客統計と収益パターンを分析し、重要なビジネス上の質問に答えます。本プロジェクトは、データ抽出からETL、リレーショナルデータベース設計、探索的分析、ビジネスインテリジェンスの可視化までの完全なパイプラインを実装しています。
+**Dashboard:** [View on Tableau Public](https://public.tableau.com/views/_17808045955120/sheet8?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
 ---
 
-## Business Questions Answered
-### ビジネス課題
+## Final Dashboard / 最終ダッシュボード
 
-| Question | Insight |
-|----------|---------|
-| **Which lines carry the highest passenger demand?** (最高の乗客需要を持つ路線は?) | Identify capacity planning priorities and investment opportunities |
-| **Which stations are major passenger hubs?** (主要な乗客ハブとなる駅は?) | Optimize staffing, facilities, and passenger experience at critical stations |
-| **How has annual revenue trended?** (年度別収益の推移は?) | Track system-wide financial performance and growth |
-| **How do commuter vs. non-commuter streams compare?** (定期・定期外の収益比較は?) | Understand revenue diversification and risk exposure |
+<img width="1536" height="852" alt="Dashboard Final" src="https://github.com/user-attachments/assets/6b68c11c-0a71-46ba-8791-45416159b332" />
+
+This dashboard highlights passenger demand by line, major station hubs, and system-wide revenue trends. Revenue is system-wide, while passenger metrics are station/line-based.
 
 ---
 
-## Project Architecture
-### プロジェクト構成
+## Business Questions / 分析課題
 
-```
-Data Sources
-    ↓
-[Python ETL Scripts]
-    • extract_*.py: Pull raw data from JSON, PDFs, APIs
-    • clean_*.py: Normalize station IDs, passenger counts, revenue
-    • create_line_data.py: Derive normalized Lines table
-    ↓
-[Cleaned CSV]
-    ↓
-[SQLite Database]
-    • Relational schema with foreign keys
-    • Stations → Lines (many-to-one)
-    • Passengers, Revenue (fact tables)
-    ↓
-[SQL Analytics]
-    ↓
-[Tableau Dashboard]
-    ✓ Passenger demand by line & station
-    ✓ Revenue trends & composition
-    ✓ Year-over-year growth rates
+| Question | Why it matters |
+|---|---|
+| Which lines carry the highest passenger demand? | Supports capacity planning and operational prioritization. |
+| Which stations act as major passenger hubs? | Helps identify where staffing, wayfinding, and facility attention matter most. |
+| How has revenue changed by fiscal year? | Shows system-wide recovery and financial trend direction. |
+| How can cleaned transit data become a stakeholder-ready dashboard? | Demonstrates an end-to-end analytics workflow from ETL to visualization. |
+
+---
+
+## Project Flow / プロジェクト構成
+
+```text
+Raw / processed data
+        ↓
+Python cleaning scripts
+        ↓
+Cleaned CSV datasets
+        ↓
+SQLite database + SQL validation
+        ↓
+Business queries
+        ↓
+Tableau dashboard
 ```
 
 ---
 
-## Deliverables
-### 成果物
+## Data Model / データモデル
 
-| Artifact | Purpose |
-|----------|---------|
-| **Data/** | Raw, processed, and cleaned CSVs at each ETL stage |
-| **Scripts/** | Python ETL pipeline with validation & error handling |
-| **SQL/** | Schema definition + business analytics queries |
-| **Database** | `tokyo_metro.db` (SQLite with relational integrity) |
-| **ERD** | [Entity-Relationship Diagram](assets/erd/) showing normalized schema |
-| **Dashboard** | [Tableau Public](assets/dashboard/) for executive reporting |
+<img width="3000" height="765" alt="tokyo_metro_erd" src="https://github.com/user-attachments/assets/63f3635b-98a6-46c4-8234-0a6d025da3b5" />
+
+The relational model connects passenger records to stations and lines:
+
+```text
+Lines → Stations → Passengers
+```
+
+<img width="2400" height="1300" alt="revenue_standalone_table" src="https://github.com/user-attachments/assets/45ed681a-f1a6-4cc8-aef7-c650f84c6945" />
+
+Revenue is intentionally modeled separately because the available revenue data is system-wide and not tied to individual stations or lines.
 
 ---
 
-## Quick Start
-### クイックスタート
+## Tech Stack / 使用技術
 
-### Prerequisites
+- **Python / pandas** — data cleaning and transformation
+- **SQLite** — database creation and validation
+- **SQL** — stakeholder-focused analysis queries
+- **Tableau** — final dashboard
+- **GitHub Copilot** — code review, validation suggestions, and query/documentation polish
+
+---
+
+## Repository Structure / リポジトリ構成
+
+```text
+data/
+  raw/          source files
+  processed/    intermediate extracted data
+  cleaned/      final cleaned CSVs
+
+scripts/        extraction, cleaning, and SQLite loading scripts
+sql/            schema and business queries
+assets/         ERD, screenshots, dashboard images
+tokyo_metro.db  generated SQLite database
+```
+
+---
+
+## Run the Pipeline / 実行方法
+
 ```bash
 pip install -r requirements.txt
-```
 
-### Run the Pipeline
-```bash
-# 1. Extract and clean data
-python scripts/extract_station_data.py
-python scripts/extract_passenger_data.py
-python scripts/extract_revenue_data.py
-
-# 2. Normalize and transform
 python scripts/clean_station_data.py
 python scripts/clean_passenger_data.py
 python scripts/clean_revenue_data.py
 python scripts/create_line_data.py
-
-# 3. Load into SQLite
 python scripts/import_data_to_sqlite.py
+```
 
-# 4. Run analytics
+Optional SQL analysis:
+
+```bash
 sqlite3 tokyo_metro.db < sql/business_queries.sql
 ```
 
-### View Results
-- **Database**: `tokyo_metro.db` (inspect with any SQLite client)
-- **Analytics**: See `sql/business_queries.sql` for stakeholder-focused queries
-- **Dashboard**: Open [assets/dashboard/](assets/dashboard/) in Tableau or browser
+---
+
+## Key Outputs / 主な成果物
+
+- Cleaned CSV files for lines, stations, passengers, and revenue
+- SQLite database with validated table loads
+- SQL queries answering transit/business questions
+- ERD documenting table relationships
+- Japanese-first bilingual Tableau dashboard
 
 ---
 
-## Key Features
-### 主な特徴
+## Notes & Limitations / 注意事項
 
-✅ **End-to-end ETL pipeline** with input validation and error handling  
-✅ **Normalized relational schema** maintaining referential integrity  
-✅ **Bilingual code comments** (English + Japanese) for global collaboration  
-✅ **Business-focused SQL queries** with clear naming and bilingual questions  
-✅ **Tableau dashboard** for non-technical stakeholder decision-making  
-✅ **Robust error handling** in Python scripts (file existence, empty data, schema mismatches)  
+- Japan’s fiscal year runs from **April to March**.
+- Revenue data is **system-wide**, not station- or line-specific.
+- Passenger charts use available station/line passenger records from the cleaned dataset.
+- The dashboard is designed for portfolio and analytical storytelling, not real-time operations.
 
 ---
 
-## Project Journey: Before & After
-### プロジェクト完成の経過
+## How GitHub Copilot Helped / Copilotの活用
 
-**Before (Unfinished State):**
-- ❌ ETL scripts lacked validation and error handling
-- ❌ Data cleaning logic unclear; duplicates and null handling inconsistent
-- ❌ No schema documentation or ERD
-- ❌ SQL queries unoptimized and poorly commented
-- ❌ No business framing or executive dashboard
-
-**After (GitHub Finish-Up-A-Thon Completion):**
-- ✅ Added file existence checks, empty DataFrame validation, schema matching
-- ✅ Clarified data normalization rules (e.g., Marunouchi Branch mapping to Mb)
-- ✅ Created relational schema with clear constraints
-- ✅ Rewrote SQL queries with bilingual comments and stakeholder-focused business questions
-- ✅ Built Tableau dashboard linking all insights to actionable business metrics
+GitHub Copilot was used as a review and finishing assistant. It helped identify validation improvements in the Python scripts, suggested clearer SQL/business-query structure, and supported documentation polish. I manually reviewed the suggestions and kept the changes that preserved the data model and project scope.
 
 ---
 
-## Caveats & Limitations
-### 注意事項
+## Future Improvements / 今後の改善案
 
-- **Data Scope**: Passenger and revenue data are historical aggregates; real-time data not included
-- **Time Coverage**: Fiscal year boundaries may not align with calendar years (documented in Revenue table)
-- **Marunouchi Branch Normalization**: Branch stations (Mb03, Mb04, Mb05) are consolidated to Mb line for referential integrity
-- **Aggregate Metrics**: Daily passenger averages are system-wide aggregates; station-level micro-variations not captured
-- **Manual Data Entry**: Source PDFs and JSON files require periodic re-extraction; no automated refresh
+- Add automated refresh steps if newer source data is available.
+- Include geospatial coordinates for a future station map.
+- Add forecasting once more years of revenue data are available.
 
 ---
 
-## Role of GitHub Copilot
-### GitHub Copilotの活用
+## Data Source
 
-This project was revived and completed with GitHub Copilot assistance for:
-- **Code review**: Identified gaps in error handling and validation across Python scripts
-- **Query optimization**: Suggested bilingual SQL comments and stakeholder-focused business logic
-- **Documentation**: Helped structure and clarify README, schema documentation, and query intent
-- **Best practices**: Recommended Path validation, exception handling, and DataFrame checks for robustness
-
----
-
-## Next Steps (Optional)
-### 今後の展開
-
-- [ ] Integrate real-time passenger tracking API for live dashboards
-- [ ] Add predictive models (time-series forecasting for revenue trends)
-- [ ] Automate weekly data refresh pipeline with scheduled tasks
-- [ ] Expand to include operational metrics (delays, overcrowding alerts)
-
----
-
-## Acknowledgments
-
-**Data Source**: Tokyo Metro public datasets  
-**Challenge**: GitHub Finish-Up-A-Thon  
-**Tech Stack**: Python · SQLite · SQL · Tableau · Git  
-**Language**: English & Japanese (日本語 & 英語)
-
----
-
-*Last Updated: 2026-06-06*
+Tokyo Metro public datasets.
